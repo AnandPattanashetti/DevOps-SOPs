@@ -1,0 +1,111 @@
+# Standard Operating Procedures (SOPs) README
+
+This repository contains a collection of Standard Operating Procedures (SOPs) for various DevOps tasks and technologies. Each SOP provides detailed instructions for installation, configuration, and usage of specific tools or services.
+
+## SOPs List
+
+1. *Ansible Installation and SSH Connectivity*
+   - Instructions for installing Ansible and establishing SSH connectivity.
+
+2. *Docker and Minikube on Ubuntu*
+   - Steps to install Docker and Minikube for local Kubernetes development on Ubuntu.
+
+3. *Grafana Installing and Creating as Service*
+   - Guidance for installing Grafana and configuring it as a service for monitoring.
+
+4. *Grafana-AWS Linux AMI*
+   - Instructions specific to installing Grafana on an AWS Linux AMI instance.
+
+5. *Jenkins-AWS Ubuntu*
+   - SOP for setting up Jenkins on an AWS Ubuntu instance.
+
+6. *Jenkins - Email Server Configuration*
+   - Configuring Jenkins to send emails for notifications and alerts.
+
+7. *Jenkins-AWS Linux*
+   - Installation steps for Jenkins on an AWS Linux instance.
+
+8. *Jenkins-GitHub Integration-Using SSH*
+   - Integrating Jenkins with GitHub using SSH for source code management.
+
+9. *Jenkins-Master-Slave Architecture*
+   - Guidelines for setting up a Jenkins master-slave architecture for distributed builds.
+
+10. *Kubernetes Installation*
+    - SOP for installing Kubernetes for container orchestration.
+
+11. *Maven-AWS Linux AMI*
+    - Maven installation instructions specific to AWS Linux AMI.
+
+12. *Node Exporter Installation SOP*
+    - Installing and configuring Node Exporter for Prometheus monitoring.
+
+13. *Prometheus - AWS Linux EC2*
+    - Installing Prometheus for monitoring on an AWS Linux EC2 instance.
+
+14. *Prometheus - Installing and Configuring*
+    - General instructions for installing and configuring Prometheus monitoring.
+
+15. *SonarQube on AWS EC2*
+    - Installation steps for SonarQube on an AWS EC2 instance.
+
+16. *Terraform on Amazon Linux 5.10 EC2 Instance*
+    - SOP for installing Terraform on an Amazon Linux EC2 instance.
+
+17. *Terraform-AWS EC2*
+    - Instructions for using Terraform to provision AWS EC2 instances.
+
+18. *WordPress in a Docker container on AWS*
+    - Deploying WordPress in a Docker container on AWS.
+
+19. *nginx webserver on AWS EC2*
+    - Setting up an nginx web server on an AWS EC2 instance.
+
+20. *tomcat - AWS Linux AMI*
+    - Installing and configuring Apache Tomcat on an AWS Linux AMI.
+
+## Usage
+Each SOP provides detailed instructions for specific tasks or technologies. Follow the steps outlined in each SOP to achieve the desired outcome.
+
+## Contribution
+Contributions to improve existing SOPs or add new ones are welcome. Please follow the contribution guidelines outlined in CONTRIBUTING.md.
+
+Getting Started 🚀
+To get started, clone this repository to your local machine using the following command:
+
+git clone https://github.com/yourusername/installation-sops.git
+
+Once cloned, you can navigate to the respective tool's SOP directory and view the installation instructions in the markdown file.
+
+SOPs List 📋 This repository currently includes SOPs for the following tools:
+## SOPs List 📋 
+
+- Ansible 🛠️
+- Docker 🐳
+- Grafana ⚙️
+- Jenkins ⚙️
+- Kubernetes 🛠️
+- Maven 🛠️
+- Minikube 🐳
+- Node Exporter ⚙️
+- Prometheus ⚙️
+- SonarQube 🔍
+- Terraform 🛠️
+- WordPress 🐳
+- nginx 🛠️
+- tomcat 🛠️
+
+
+We continuously update and add more SOPs as needed. If you would like to contribute, please see the Contributing section.
+
+Contributing 🙌
+
+We welcome contributions to this repository! If you would like to add, modify, or improve the existing SOPs, please follow these steps:
+
+Fork the repository to your GitHub account.
+Create a new branch with a descriptive name for your changes.
+Make your changes and ensure that the markdown files are properly formatted.
+Commit your changes with clear and concise commit messages.
+Push your changes to your forked repository.
+Submit a pull request to the main repository.
+We appreciate your contributions and will review and merge them as appropriate. 🎉
