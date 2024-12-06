@@ -1,62 +1,71 @@
+Standard Operating Procedure (SOP) for Installing Ansible and Setting Up SSH Connectivity on Ubuntu
+1. Update System Packages
+Open a terminal or SSH into your master node.
+Run the following command to update the package index:
 
-Standard Operating Procedure (SOP) for Starting, Updating, and Installing Ansible and Setting Up SSH Connectivity:
+sudo apt update && sudo apt upgrade -y
+2. Install Ansible
+Install Ansible by running:
 
-1. Start by opening a terminal or SSH into your master node.
+sudo apt install ansible -y
+Verify the installation by checking the Ansible version:
 
-2. Update the system packages by running the following command:
-   ```
-   sudo apt update
-   ```
+ansible --version
+Ensure the version matches the latest stable release. If required, refer to Ansible's official documentation for the latest release details.
+3. Set Up SSH Connectivity
+a. Navigate to the .ssh Directory
+Move to the SSH directory:
 
-3. Install Ansible by executing the following command:
-   ```
-   sudo apt install ansible -y
-   ```
+cd ~/.ssh/
+b. Create and Configure a Private Key File
+Create a new file named ansible-key:
 
-4. To verify the successful installation of Ansible, check the version by running:
-   ```
-   ansible --version
-   ```
+nano ansible-key
+Paste your private key into the file. For example, if using an AWS .pem file, copy the entire contents of your .pem file and paste them here.
+Save and exit the file (e.g., in nano, press Ctrl + O, then Enter to save, and Ctrl + X to exit).
+c. Secure the Private Key
+Restrict access to the private key file:
 
-   Ensure that the output displays the version information, indicating that Ansible is installed correctly.
+chmod 600 ansible-key
+d. Verify the Key
+Check that the key has been correctly saved:
 
-5. Next, navigate to the .ssh directory:
-   ```
-   cd ~/.ssh/
-   ```
+cat ansible-key
+This will display the key contents.
+e. Add the Key to the SSH Agent
+Start the SSH agent:
 
-6. Create a file named `ansible-key` using the text editor of your choice (e.g., `vi`, `nano`, `vim`):
-   ```
-   vi ansible-key (copy complete contents of you .pem key and paster here)
-   ```
+eval "$(ssh-agent -s)"
+Add the private key:
 
-   This will open the `ansible-key` file in the chosen text editor.
+ssh-add ~/.ssh/ansible-key
+4. Test SSH Connectivity
+Verify that you can connect to a child node (replace <child-node-ip> with the appropriate IP address):
 
-7. In the `ansible-key` file, paste the contents of your private key. You can copy the contents of the private key from another source, such as a file or an SSH key manager.
+ssh -i ~/.ssh/ansible-key ubuntu@<child-node-ip>
+Ensure there are no errors and you can log in.
+5. Add Child Nodes to Ansible Inventory
+Edit the Ansible inventory file (default location: /etc/ansible/hosts):
 
-8. Save and exit the text editor. For example, in `vi`, press `Esc`, type `:wq`, and hit `Enter` to save and exit.
+sudo nano /etc/ansible/hosts
+Add your child nodes under a specific group, for example:
 
-9. To verify that the `ansible-key` file contains the correct contents, use the `cat` command:
-   ```
-   cat ansible-key
-   ```
+[webservers]
+192.168.1.101 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=~/.ssh/ansible-key
+192.168.1.102 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=~/.ssh/ansible-key
+Save and exit the file.
+6. Test Ansible Connectivity
+Run the following command to test connectivity:
 
-   This will display the contents of the `ansible-key` file in the terminal.
+ansible -m ping all
+This should return SUCCESS for all nodes in the inventory.
+Additional Notes
+Python Installation (if required):
 
-10. The SSH connectivity between the master and child nodes is essential for Ansible to manage and configure the child nodes remotely. By setting up SSH connectivity, Ansible can securely authenticate and establish a connection with the child nodes using the private key provided.
-
-   Importance of SSH Connectivity:
-   - Secure Communication: SSH (Secure Shell) provides secure encrypted communication between the master and child nodes, ensuring the confidentiality and integrity of data transferred during Ansible operations.
-   - Authentication: SSH allows the master node to authenticate itself to the child nodes using the private key. This ensures that only authorized systems can access and manage the child nodes.
-   - Remote Management: SSH connectivity enables Ansible to remotely execute commands and tasks on the child nodes, facilitating centralized management and configuration of multiple systems.
-
-Following this SOP will guide you through starting, updating, and installing Ansible on your master node. Additionally, it outlines the process of creating a file to store your private key 
-for establishing SSH connectivity between the master and child nodes. SSH connectivity is crucial for Ansible to securely manage and configure the child nodes in your environment.
-
-
-
-
+sudo apt install python3 -y
+For Amazon Linux systems:
 
 sudo yum install python3 -y
-sudo amazon-linux-extras install ansible2 -y
+sudo amazon-linux-extras enable ansible2
+sudo yum install ansible -y
 ansible --version
